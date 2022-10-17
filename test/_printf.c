@@ -3,6 +3,7 @@
 int _printf(const char *format, ...)
 {
 	int i;
+
 	va_list arg;
 
 	va_start(arg, format);
@@ -11,7 +12,18 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 			_putchar(format[i]);
 		else
+		{
 			i++;
+
+			switch (format[i])
+			{
+				case '%':
+					_putchar('%');
+					break;
+				case 'c':
+					_putchar()
+			}
+		}
 	}
 	va_end(arg);
 
