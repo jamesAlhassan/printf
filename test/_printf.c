@@ -8,7 +8,10 @@ int _printf(const char *format, ...)
 	va_start(arg, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		_putchar(format[i]);
+		if (format[i] != '%')
+			_putchar(format[i]);
+		else
+			i++;
 	}
 	va_end(arg);
 
