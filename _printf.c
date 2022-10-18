@@ -30,7 +30,6 @@ int _printf(const char *format, ...)
 
 			if (format[i] == '\0')
 				return (0);
-
 			switch (format[i])
 			{
 				case '%':
@@ -48,6 +47,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(arg);
-
 	return (count);
 }
