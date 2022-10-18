@@ -2,9 +2,10 @@
 
 /**
  * main - test files
- * 
+ *
  * Return: always 0
  */
+
 int main(void)
 {
 	_printf("The ");
@@ -15,7 +16,7 @@ int main(void)
 
 	_printf("%%");
 	_putchar(10);
-	
+
 	_printf("%c", 'e');
 	_putchar(10);
 
