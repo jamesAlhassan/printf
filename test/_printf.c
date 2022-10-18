@@ -15,10 +15,13 @@ int _printf(const char *format, ...)
 		{
 			i++;
 
+			if(format[i] == '\0')
+				return (0);
+
 			switch (format[i])
 			{
 				case '%':
-					/*_putchar('%');*/
+					_putchar('%');
 					break;
 				case 'c':
 					_putchar(va_arg(arg, int));
