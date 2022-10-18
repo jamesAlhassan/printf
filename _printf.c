@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		{
 			++i;
 			if (format[i] == '\0')
-				return (count);
+				return (-1);
 			switch (format[i])
 			{
 				case '%':
