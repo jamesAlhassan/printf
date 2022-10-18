@@ -20,5 +20,8 @@ int main(void)
 	_printf("%c", 'e');
 	_putchar(10);
 
+	_printf("%s", "this is string");
+	_putchar(10);
+
 	return (0);
 }
