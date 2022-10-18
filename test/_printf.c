@@ -34,11 +34,13 @@ int _printf(const char *format, ...)
 					break;
 
 				case 's':
-					_print_string(va_arg(arg, char *str));
+					_print_string(va_arg(arg, char *));
+					break;
 			}
 		}
 	}
 	va_end(arg);
 
 	return (0);
+
 }
