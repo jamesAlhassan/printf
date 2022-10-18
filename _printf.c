@@ -6,51 +6,48 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, count;
-	va_list arg;
+	int i, j, count = 0;
+	va_list ls;
+	charfunc ids[] = {
+		{'c', _print_char},
+		{'s', _print_string},
+		{'i', _print_int},
+		{'d', _print_int},
+		{'\0', NULL}
+	}
 
 	if (format == NULL)
 		return (-1);
-	count = 0;
+
 	va_start(arg, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
+			write(1, &format[i], 1);
 			count++;
 		}
 		else
 		{
-			++i;
-			if (format[i] == '\0')
-				return (-1);
-			switch (format[i])
+			i++;
+			while (format[i] != '\0')
 			{
-				case '%':
-					_putchar('%');
-					count++;
+				for (j = 0; ids[j].id != '\0'; i++)
+				{
+					if (format[i] == ids[j].id)
+					{
+						count += ids[j].fn(ls);
+						break;
+					}
+				}
+				if (ids[j].id)
 					break;
-				case 'c':
-					count = count + _print_char(va_arg(arg, int));
-					break;
-				case 's':
-					count = count + _print_string(va_arg(arg, char *));
-					break;
-				case 'd':
-					count++;
-					_print_int(va_arg(arg, int));
-					break;
-				case 'i':
-					_print_int(va_arg(arg, int));
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[i]);
-					count += 2;
+				if (format[i] == '\0')
+					return (-1);
+				i++;
 			}
 		}
 	}
-	va_end(arg);
+	va_end(ls);
 	return (count);
 }
