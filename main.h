@@ -17,8 +17,8 @@ typedef struct charfunction
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int _print_string(char *str);
+int _print_string(va_list ls);
 int _print_char(va_list ls);
-int _print_int(int a);
+int _print_int(va_list ls);
 
 #endif
