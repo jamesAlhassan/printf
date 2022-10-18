@@ -6,44 +6,43 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, j, count = 0;
-	va_list ls;
-	charfunc ids[] = {
+	int i, j;
+	int count = 0;
+	va_list lst;
+	interface ids[] = {
 		{'c', _print_char},
 		{'s', _print_string},
 		{'i', _print_int},
 		{'d', _print_int},
+		{'%', _print_mod},
 		{'\0', NULL}
 	};
-	va_start(ls, format);
-	for (i = 0; format[i] != '\0'; i++)
-	{
-		if (format[i] != '%')
+
+	va_start(lst, format);
+	for (i = 0; format[i]; i++)
+		if (format[i] == '%')
 		{
-			write(1, &format[i], 1);
-			count++;
+			i++;
+			for (; format[i] != '\0'; i++)
+			{
+				for (j = 0; ids[j].id != '\0'; j++)
+					if (format[i] == ids[j].id)
+					{
+						count += ids[j].fn(lst);
+						break;
+					}
+				if (ids[j].id)
+					break;
+			}
+			if (format[i] == '\0')
+				return (-1);
 		}
 		else
 		{
-			i++;
-			while (format[i] != '\0')
-			{
-				for (j = 0; ids[j].id != '\0'; i++)
-				{
-					if (format[i] == ids[j].id)
-					{
-						count += ids[j].fn(ls);
-						break;
-					}
-				}
-				if (ids[j].id)
-					break;
-				if (format[i] == '\0')
-					return (-1);
-				i++;
-			}
+			write(1, &format[i], 1);
+			count += 1;
 		}
-	}
-	va_end(ls);
+
+	va_end(lst);
 	return (count);
 }

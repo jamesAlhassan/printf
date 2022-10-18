@@ -2,7 +2,7 @@
 
 /**
  * _print_string - prints a string to stdout
- * @str: string to print out
+ * @ls: args list
  * Return: number of characters printed
  */
 
@@ -10,11 +10,12 @@ int _print_string(va_list ls)
 {
 	int i, count = 0;
 
-	char *str = var_arg(ls, char *);
+	char *str = va_arg(ls, char *);
+
 	if (str == NULL)
 		return (0);
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i]; i++)
 	{
 		(write(1, &str[i], 1));
 		count++;
