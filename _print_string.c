@@ -3,7 +3,7 @@
 /**
  * _print_string - prints a string to stdout
  * @str: string to print out
- * Return: 0 if success
+ * Return: number of characters printed
  */
 
 int _print_string(char *str)
