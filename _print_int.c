@@ -9,24 +9,27 @@ int _print_int(int a)
 {
 	int divisor = 1, len = 0;
 	char ch;
+	unsigned num;
 
 	if (a < 0)
 	{
 		ch = '-';
 		len = len + write(1, &ch, 1);
-		a = a * (-1);
+		num = a * (-1);
 	}
+	else
+		num = a;
 
-	while (a / divisor > 9)
+	while (num / divisor > 9)
 	{
 		divisor *= 10;
 	}
 
 	while (divisor >= 1)
 	{
-		ch =  a / divisor + '0';
+		ch =  num / divisor + '0';
 		len = len + write(1, &ch, 1);
-		a = a % divisor;
+		num = num % divisor;
 		divisor /= 10;
 	}
 
