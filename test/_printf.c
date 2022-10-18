@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case '%':
-					_putchar('%');
+					/*_putchar('%');*/
 					break;
 				case 'c':
 					_putchar(va_arg(arg, int));
