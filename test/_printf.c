@@ -43,6 +43,9 @@ int _printf(const char *format, ...)
 				case 's':
 					count = count + _print_string(va_arg(arg, char *));
 					break;
+				default:
+					_putchar(format[i]);
+					count++;
 			}
 		}
 	}
