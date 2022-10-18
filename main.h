@@ -4,6 +4,17 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/**
+ * stuct charfunction - struct to hold id and function
+ * @id: character that identifies argument
+ * @fn: function to run if id matches
+ */
+typedef struct charfunction
+{
+	char id;
+	int (*fn)(va_list);
+} charfunc;
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _print_string(char *str);
