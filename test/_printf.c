@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 					break;
 
 				case 's':
-					
+					_print_string(va_arg(arg, char *str));
 			}
 		}
 	}
