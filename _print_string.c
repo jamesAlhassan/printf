@@ -8,7 +8,7 @@
 
 int _print_string(char *str)
 {
-	int i;
+	int i, count = 0;
 
 	if (str == NULL)
 		return (0);
@@ -16,7 +16,8 @@ int _print_string(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		(write(1, &str[i], 1));
+		count++;
 	}
 
-	return (i);
+	return (count);
 }
