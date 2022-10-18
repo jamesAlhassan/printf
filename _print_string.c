@@ -13,12 +13,12 @@ int _print_string(va_list ls)
 	char *str = va_arg(ls, char *);
 
 	if (str == NULL)
-		return (0);
+		str = "(null)";
 
 	for (i = 0; str[i]; i++)
 	{
 		(write(1, &str[i], 1));
-		count++;
+		count += 1;
 	}
 
 	return (count);
