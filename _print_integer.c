@@ -7,14 +7,14 @@
  */
 int _print_int(int a)
 {
-	int digit, divisor = 1, len = 0;
+	int divisor = 1, len = 0;
 	char ch;
 
-	if (n < 0)
+	if (a < 0)
 	{
 		ch = '-';
 		len = len + write(1, &ch, 1);
-		a = * (-1);
+		a = a * (-1);
 	}
 
 	while (a / divisor > 9)
@@ -25,8 +25,8 @@ int _print_int(int a)
 	while (divisor >= 1)
 	{
 		ch =  a / divisor + '0';
-		len = len + write(1, &c, 1);
-		a =% divisor;
+		len = len + write(1, &ch, 1);
+		a = a % divisor;
 		divisor /= 10;
 	}
 
