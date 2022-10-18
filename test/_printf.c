@@ -21,7 +21,8 @@ int _printf(const char *format, ...)
 					_putchar('%');
 					break;
 				case 'c':
-					_putchar()
+					_putchar(va_arg(arg, int));
+					break;
 			}
 		}
 	}
