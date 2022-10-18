@@ -5,12 +5,13 @@
  * @a: integer to print
  * Return: count of characters printed
  */
-int _print_int(int a)
+int _print_int(va_list ls)
 {
-	int divisor = 1, len = 0;
+	int a, divisor = 1, len = 0;
 	char ch;
 	unsigned int num;
 
+	a = va_arg(ls, int);
 	if (a < 0)
 	{
 		ch = '-';
