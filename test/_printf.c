@@ -32,6 +32,9 @@ int _printf(const char *format, ...)
 				case 'c':
 					_putchar(va_arg(arg, int));
 					break;
+
+				case 's':
+					
 			}
 		}
 	}
