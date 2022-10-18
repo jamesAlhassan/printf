@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			i++;
+			++i;
 			if (format[i] == '\0')
 				return (count);
 			switch (format[i])
