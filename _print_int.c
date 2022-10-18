@@ -9,7 +9,7 @@ int _print_int(int a)
 {
 	int divisor = 1, len = 0;
 	char ch;
-	unsigned num;
+	unsigned int num;
 
 	if (a < 0)
 	{
