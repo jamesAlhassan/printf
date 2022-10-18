@@ -9,5 +9,5 @@ int _print_char(char c)
 {
 	if (c == NULL)
 		return (0);
-	return (write(1, &c, 1);
+	return (write(1, &c, 1));
 }
