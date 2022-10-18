@@ -3,14 +3,20 @@
 /**
  * _print_string - prints a string to stdout
  * @str: string to print out
+ * Return: number of characters printed
  */
 
-void _print_string(char *str)
+int _print_string(char *str)
 {
 	int i;
 
+	if (str == NULL)
+		return (0);
+
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		_putchar(str[i]);
+		(write(1, &str[i], 1));
 	}
+
+	return (i);
 }
