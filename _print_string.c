@@ -11,8 +11,8 @@ int _print_string(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		return (write(1, str[i], 1));
+		(write(1, &str[i], 1));
 	}
 
-	return (1);
+	return (0);
 }
