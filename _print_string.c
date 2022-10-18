@@ -5,12 +5,14 @@
  * @str: string to print out
  */
 
-void _print_string(char *str)
+int _print_string(char *str)
 {
 	int i;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		_putchar(str[i]);
+		return (write(1, str[i], 1));
 	}
+
+	return (1);
 }
