@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * _printf - produces output according to a format
+ * @format: is a character string.
+ * Return: 0 if success
+ */
+
 int _printf(const char *format, ...)
 {
 	int i;
@@ -15,7 +21,7 @@ int _printf(const char *format, ...)
 		{
 			i++;
 
-			if(format[i] == '\0')
+			if (format[i] == '\0')
 				return (0);
 
 			switch (format[i])
