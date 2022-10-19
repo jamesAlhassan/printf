@@ -2,7 +2,7 @@
 
 /**
  * _print_int - prints an integer value
- * @a: integer to print
+ * @ls: list passed
  * Return: count of characters printed
  */
 int _print_int(va_list ls)
