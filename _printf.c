@@ -6,7 +6,8 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, j, count = 0;
+	int i, j;
+	int count = 0;
 	va_list lst;
 	charfunction ids[] = {
 		{'c', _print_char},
@@ -17,35 +18,32 @@ int _printf(const char *format, ...)
 		{'b', _print_binary},
 		{'\0', NULL}
 	};
+
 	va_start(lst, format);
-	if (format == NULL)
-		return (-1);
-	for (i = 0; format[i] != '\0'; i++)
-	{
+	for (i = 0; format[i]; i++)
 		if (format[i] == '%')
 		{
 			i++;
-			for (j = 0; ids[j].id != '\0'; j++)
+			for (; format[i] != '\0'; i++)
 			{
-				if (format[i] == ids[j].id)
-				{
-					count += ids[j].fn(lst);
+				for (j = 0; ids[j].id != '\0'; j++)
+					if (format[i] == ids[j].id)
+					{
+						count += ids[j].fn(lst);
+						break;
+					}
+				if (ids[j].id)
 					break;
-				}
 			}
-			if (ids[j].id == '\0' && format[i] != ' ')
-			{
-				count = count + _putchar(format[i - 1]);
-				count = count + _putchar(format[i]);
-			}
-			else
+			if (format[i] == '\0')
 				return (-1);
 		}
 		else
 		{
-			count = count + _putchar(format[i]);
+			write(1, &format[i], 1);
+			count += 1;
 		}
-	} 
+
 	va_end(lst);
 	return (count);
 }
