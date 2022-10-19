@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
+	{
 		if (format[i] == '%')
 		{
 			i++;
@@ -44,6 +45,7 @@ int _printf(const char *format, ...)
 		{
 			count = count + _putchar(format[i]);
 		}
+	} 
 	va_end(lst);
 	return (count);
 }
