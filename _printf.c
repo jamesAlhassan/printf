@@ -34,15 +34,15 @@ int _printf(const char *format, ...)
 			}
 			if (ids[j].id == '\0' && format[i] != ' ')
 			{
-				count = count + write(1, &format[i - 1], 1);
-				count = count + write(1, &format[i], 1);
+				count = count + _putchar(format[i - 1]);
+				count = count + _putchar(format[i]);
 			}
 			else
 				return (-1);
 		}
 		else
 		{
-			count = count + write(1, &format[i], 1);
+			count = count + _putchar(format[i]);
 		}
 	va_end(lst);
 	return (count);
