@@ -15,6 +15,7 @@ int _printf(const char *format, ...)
 		{'i', _print_int},
 		{'d', _print_int},
 		{'%', _print_per},
+		{'b', _print_binary},
 		{'\0', NULL}
 	};
 

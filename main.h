@@ -23,5 +23,6 @@ int _print_string(va_list ls);
 int _print_char(va_list ls);
 int _print_int(va_list ls);
 int _print_per(va_list ls);
+int _print_binary(va_list ls);
 
 #endif
