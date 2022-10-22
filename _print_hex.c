@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * _print_binary - converts decimal to binary and prints it
+ * _print_hex - converts decimal to a hex
  * @ls: list passed
  * Return: count of characters printed
  */
-int _print_binary(va_list ls)
+int _print_hex(va_list ls)
 {
-	int divisor = 1, len = 0;
+	int divisor = 1, len = 0, temp;
 	char ch;
 	unsigned int num;
 
@@ -20,17 +20,26 @@ int _print_binary(va_list ls)
 	}
 	if (num < 0)
 		num *= -1;
-	while (num / divisor >= 2)
+	while (num / divisor >= 16)
 	{
-		divisor *= 2;
+		divisor *= 16;
 	}
 
 	while (divisor > 0)
 	{
+
+		temp = num / divisor;
+		if (temp < 10)
+			ch = temp;
+		else
+		{
+			temp += 55;
+			ch = temp;
+		}
 		ch =  num / divisor + '0';
 		len = len + write(1, &ch, 1);
 		num = num % divisor;
-		divisor /= 2;
+		divisor /= 16;
 	}
 	return (len);
 }

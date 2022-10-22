@@ -1,4 +1,8 @@
 #include "main.h"
+
+int run_printf(const char *, va_list, charfunction[]);
+int _printf(const char *, ...);
+
 /**
  * _printf - produces output according to a format
  * @format: is a character string.
@@ -6,8 +10,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, j;
-	int count = 0;
+	int char_count;
 	va_list lst;
 	charfunction ids[] = {
 		{'c', _print_char},
@@ -16,10 +19,30 @@ int _printf(const char *format, ...)
 		{'d', _print_int},
 		{'%', _print_per},
 		{'b', _print_binary},
+		{'o', _print_oct},
+		{'x', _print_hex},
+		{'X', _print_hex},
 		{'\0', NULL}
 	};
-
+	if (format == NULL)
+		return (-1);
 	va_start(lst, format);
+	char_count = run_printf(format, lst, ids);
+	va_end(lst);
+	return (char_count);
+}
+
+/**
+ * run_printf - runs printf
+ * @format: character string
+ * @lst: argument list
+ * @ids: ids of specifiers
+ * Return: count of characters printed
+ */
+int run_printf(const char *format, va_list lst, charfunction ids[])
+{
+	int i, j, count;
+
 	for (i = 0; format[i]; i++)
 		if (format[i] == '%')
 		{
@@ -34,16 +57,16 @@ int _printf(const char *format, ...)
 					}
 				if (ids[j].id)
 					break;
+				count += _putchar(format[i - 1]);
+				count += _putchar(format[i]);
+				break;
 			}
 			if (format[i] == '\0')
 				return (-1);
 		}
 		else
 		{
-			write(1, &format[i], 1);
-			count += 1;
+			count += _putchar(format[i]);
 		}
-
-	va_end(lst);
 	return (count);
 }
